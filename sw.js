@@ -1,4 +1,4 @@
-let nameList = "v2";
+let nameList = "v1";
 self.addEventListener("install", e => {
   e.waitUntil(
     caches.open(nameList).then(cache => {
@@ -39,7 +39,21 @@ self.addEventListener('activate', e => {
   )
 });
 
-self.addEventListener("fetch", e => {
+// self.addEventListener("fetch", e => {
+//   console.log("Fetching");
+//   e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
+// });
+
+self.addEventListener('fetch', function(event) {
   console.log("Fetching");
-  e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
-});
+  event.respondWith(
+    caches.match(event.request)
+      .then(function(response) {
+        if (response) {
+          return response;
+        }
+        return fetch(event.request);
+      }
+    )
+  );
+})
