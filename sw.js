@@ -14,6 +14,10 @@ self.addEventListener("install", e => {
           'css/index.css',
           'css/staff.css',
           'main.js',
+          'img/175-1.jfif',
+          'img/175.jfif',
+          'img/176.jfif',
+          'img/177.jfif',
         ]);
       })
       .then(() => self.skipWaiting())
