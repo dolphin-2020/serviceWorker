@@ -14,8 +14,6 @@ self.addEventListener("install", e => {
           "css/index.css",
           "css/staff.css",
           "main.js",
-          "http://placekitten.com/225/175",
-          "http://placekitten.com/225/175"
         ]);
       })
       .then(() => self.skipWaiting())
