@@ -1,16 +1,14 @@
 let nameList = "v2";
 self.addEventListener("install", e => {
   e.waitUntil(
-    caches
-      .open(nameList)
-      .then(cache => {
+    caches.open(nameList).then(cache => {
         console.log("caching");
         return cache.addAll([
           "index.html",
           "about.html",
           "contact.html",
           "staff.html",
-          "/normalize/normalize.css",
+          "normalize/normalize.css",
           "css/about.css",
           "css/contact.css",
           "css/index.css",
