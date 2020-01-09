@@ -39,21 +39,21 @@ self.addEventListener('activate', e => {
   )
 });
 
-// self.addEventListener("fetch", e => {
-//   console.log("Fetching");
-//   e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
-// });
-
-self.addEventListener('fetch', function(event) {
+self.addEventListener("fetch", e => {
   console.log("Fetching");
-  event.respondWith(
-    caches.match(event.request)
-      .then(function(response) {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
-      }
-    )
-  );
+  e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
+});
+
+// self.addEventListener('fetch', function(event) {
+//   console.log("Fetching");
+//   event.respondWith(
+//     caches.match(event.request)
+//       .then(function(response) {
+//         if (response) {
+//           return response;
+//         }
+//         return fetch(event.request);
+//       }
+//     )
+//   );
 })
